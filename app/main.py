@@ -48,7 +48,9 @@ if settings.genie_api_key:
 
 _sessions: dict[int, any] = {}
 
-
+@app.get("/")
+def root():
+    return {"message": "🚀 Yoda Backend is running on Railway"}
 @app.post("/v1/start_session")
 async def start_session(request: Request, client: str = Depends(verify_token)):
     if not is_allowed_origin(request):
